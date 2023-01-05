@@ -1,4 +1,5 @@
 import { styled, Heading, Text } from '@ignite-ui/react'
+import Image from 'next/image'
 
 export const Container = styled('div', {
   maxWidth: 'calc(100vw - (100vw - 1160px) / 2)',
@@ -30,5 +31,9 @@ export const Preview = styled('div', {
 
   '@media(max-width: 600px)': {
     display: 'none',
+  },
+
+  [` > ${Image}`]: {
+    padding: '0',
   },
 })
