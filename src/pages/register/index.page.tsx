@@ -37,6 +37,7 @@ export default function Register() {
 
   const router = useRouter()
 
+  // setValues vem de dentro do useForm
   useEffect(() => {
     if (router.query.username) {
       setValue('username', String(router.query.username))
