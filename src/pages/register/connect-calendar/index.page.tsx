@@ -11,6 +11,8 @@ export default function Register() {
 
   const session = useSession()
 
+  console.log(session.data)
+
   return (
     <Container>
       <Header>
@@ -34,8 +36,6 @@ export default function Register() {
             <ArrowRight />
           </Button>
         </ConnectItem>
-
-        <Text>{JSON.stringify(session.data)}</Text>
 
         <Button type="submit">
           Próximo passo
