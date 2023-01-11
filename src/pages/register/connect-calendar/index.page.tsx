@@ -1,15 +1,11 @@
 import { Button, Heading, MultiStep, Text } from '@ignite-ui/react'
 import { Container, Header } from '../styles'
 import { ArrowRight, Check } from 'phosphor-react'
-// import { useRouter } from 'next/router'
-// import { api } from '../../lib/axios'
 import { AuthError, ConnectBox, ConnectItem } from './styles'
 import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 
-export default function Register() {
-  // async function handleRegister() {}
-
+export default function ConnectCalendar() {
   async function handleConnectCalendar() {
     await signIn('google')
   }
@@ -23,7 +19,7 @@ export default function Register() {
   return (
     <Container>
       <Header>
-        <Heading as="strong">Bem vindo ao Ignite Call</Heading>
+        <Heading as="strong">Conecte sua agenda!</Heading>
         <Text>
           Conecte o seu calendário para verificar automaticamente as horas
           ocupadas e os novos eventos à medida em que são agendados
