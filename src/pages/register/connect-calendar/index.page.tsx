@@ -4,6 +4,7 @@ import { ArrowRight, Check } from 'phosphor-react'
 import { AuthError, ConnectBox, ConnectItem } from './styles'
 import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 
 export default function ConnectCalendar() {
   async function handleConnectCalendar() {
@@ -15,6 +16,19 @@ export default function ConnectCalendar() {
 
   const hasAuthError = !!router.query.error
   const isSignedIn = session.status === 'authenticated'
+
+  useEffect(() => {
+    if (!localStorage.getItem('firstLogin')) {
+      setShowFirstLoginScreen(true)
+      localStorage.setItem('firstLogin', 'true')
+    }
+  }, [])
+
+  const [showFirstLoginScreen, setShowFirstLoginScreen] = useState(false)
+
+  if (showFirstLoginScreen) {
+    console.log('Fez o primeiro login')
+  }
 
   return (
     <Container>
