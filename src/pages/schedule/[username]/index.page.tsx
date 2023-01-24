@@ -30,6 +30,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
+// params pq é o momento da build sempre ao lado do servidor
+
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const username = String(params?.username)
 
