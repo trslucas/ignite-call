@@ -1,13 +1,13 @@
 import { Button, Text, TextArea, TextInput } from '@ignite-ui/react'
-import { ConfirForm, FormActions, FormHeader } from './styles'
+import { ConfirForm, FormActions, FormError, FormHeader } from './styles'
 import { CalendarBlank, Clock } from 'phosphor-react'
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 const confirmFormSchema = z.object({
-  name: z.string(),
-  email: z.string().email(),
+  name: z.string().min(3, { message: 'O nome precisa no mínimo 3 caracteres' }),
+  email: z.string().email({ message: 'Digite um email válido' }),
   observations: z.string().nullable(),
 })
 
@@ -39,6 +39,7 @@ export function ConfirmStep() {
       <label>
         <Text size="sm">Nome completo</Text>
         <TextInput placeholder="Seu nome" {...register('name')} />
+        {errors.name && <FormError size="sm">{errors.name.message}</FormError>}
       </label>
 
       <label>
@@ -48,6 +49,9 @@ export function ConfirmStep() {
           placeholder="johndoe@example.com"
           {...register('email')}
         />
+        {errors.email && (
+          <FormError size="sm">{errors.email.message}</FormError>
+        )}
       </label>
 
       <label>
